@@ -39,9 +39,7 @@ Vector衍生出[Stack](https://docs.oracle.com/javase/7/docs/api/java/util/Stack
 Set和List比较像，只不过Set中不能存放相同的元素。HashSet采用Hash存放，而TreeSet则是具有排序的存放。
 [Map](https://docs.oracle.com/javase/7/docs/api/java/util/Map.html)存放的是键值对，他也被称为关联数组。Map的遍历可以通过`map.entrySet()`、`map.keySet()`（返回的是Set）以及`map.values()`（返回的是Collection）进行遍历。
 对于Queue，不仅有LinkedList，还有一个优先级队列[PriorityQueue](https://docs.oracle.com/javase/7/docs/api/java/util/PriorityQueue.html)，通过`PriorityQueue(int initialCapacity, Comparator<? super E> comparator)`指定comparator从而指定优先级。
-
 ![STL说明](http://7xr64j.com1.z0.glb.clouddn.com/16-8-25/STL.jpg)
-
 16. **Java** 通过String的`split`、`replaceFirst`和`replaceAll`用到正则表达式。当然也可以通过声明[Pattern](https://docs.oracle.com/javase/7/docs/api/java/util/regex/Pattern.html#sum)来使用。`Pattern pattern = Pattern.compile(String regex);`然后[Matcher](https://docs.oracle.com/javase/7/docs/api/java/util/regex/Matcher.html) `Matcher m = pattern.matcher(String targetStr);`。`matcher.find()`将返回是否找到。我们也可以直接用`static boolean Pattern.matches(String regex, CharSequence input)`来匹配。
 17. **Java** 通过`Arrays.asList`和`list.toArray`可以在Arrays和List之间互相变换。StringBuilder.append() == String的+=。
 18. **Java** 通过`Arrays.sort(int[])`和`Collections.sort(List<T>)`都可以进行排序。Arrays里还有fill和copyOf以及binarySearch。Collections里有reverse()。StringBuilder有reverse函数供调用。
