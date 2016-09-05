@@ -15,9 +15,7 @@ These are source codes of exercises which I completed on three online judge webs
 1. **C**	double要注意不能用 = 判断相等，最好用 a - b < 0.000001来判断
 2. **C**	`printf("%.lf", a);`是会四舍五入的！也就是说，`printf("%.lf", 0.95);`输出的是1 --**Java**中的System.out.format也是一样的。
 3. **Java** 利用`System.out.format()`来输出带格式的字符串，和C的`printf`比较像，不过可以通过$1来指定对应项。
-
 ![format格式](http://7xr64j.com1.z0.glb.clouddn.com/code/snip_20160819114131.png)
-
 4. **Java**	常用import：`import java.util.*;` `import java.lang.*;`
 5. **Java**	[Scanner](https://docs.oracle.com/javase/7/docs/api/java/util/Scanner.html)要大写，来自`import java.util.Scanner;`。常用：`sc.next()` `sc.nextInt()` `sc.nextLine()` `sc.hasNext()` `sc.hasNextInt()` `sc.hasNextLine()`。
 6. **Java**	[String](https://docs.oracle.com/javase/7/docs/api/java/lang/String.html)也要大写，来自`import java.lang.String`。常用：`s.charAt()`，`s.toCharArray()`。
