@@ -5,17 +5,25 @@ public class Main{
     public static void main(String args[]){
         Scanner sc = new Scanner(System.in);
         TreeSet<Integer> set = new TreeSet<Integer>();
-        while(sc.hasNextInt()){
             int count = sc.nextInt();
             for(int i = 0; i < count; i++){
                 set.add(sc.nextInt());
             }
+            int size = set.size();
+            System.out.println(size);
             Iterator<Integer> it = set.iterator();
-            while(it.hasNext()){
-                System.out.println(it.next());
+            if(size == 1){
+            	System.out.println(it.next());
             }
-            set.clear();
-        }
+            else if(size > 1){
+            	int temp = it.next();
+	            while(it.hasNext()){
+	                System.out.print(temp);
+	                System.out.print(' ');
+	                temp = it.next();
+	            }
+	            System.out.println(temp);
+            }
         sc.close();
     }
 }
