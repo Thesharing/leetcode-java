@@ -39,12 +39,15 @@ public class Main{
 		}
 	}
 	
+	//把mid[L1...R1]和after[L2...R2]建成一棵二叉树
 	public static Node build(int L1, int R1, int L2, int R2, int[] after, int[] mid){
 		if(L1 > R1) return null;
 		Node root = new Node(after[R2]);
 		int p = L1;
 		while(mid[p] != root.value)p++;
 		int cnt = p - L1;
+		//   mid[L1...p-1,      p,       p+1...R1]
+		// after[l2...L2+cnt-1, L2+cnt...R2-1, R2]
 		root.left = build(L1, p-1, L2, L2+cnt-1, after, mid);
 		root.right = build(p+1, R1, L2+cnt, R2 - 1, after, mid);
 		return root;

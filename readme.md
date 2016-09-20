@@ -48,3 +48,6 @@ Set和List比较像，只不过Set中不能存放相同的元素。HashSet采用
 21. **Java** `Arrays.binarySearch()`只能在已经排好序的数组里使用。`Arrays.sort()`有两个重载，一个是：`Arrays.sort(Object[] a, int fromIndex, int toIndex)`，另一个是`Arrays.sort(T[] a, Comparator<? super T> c)`。后者可以拓展为`Arrays.sort(s, Collections.reverseOrder())`，而对于字符串来说，sort()会按照字典序也就是先全部大写字母再小写字母的顺序排序，因此可以通过`Arrays.sort(str, String.CASE_INTENSITIVE_ORDER)`来忽略大小写进行排序。
 22. **C** `cout << setw(5) << str;`可以设置输出字符宽度。
 23. **树**是**递归**的。
+24. **C** `const char * string.c_str()`返回一个const char *，这里要注意数组内容不可改变，如果要改变还是复制出一个新的数组比较好。通过`memcpy(char * newArray, const char * oldArray, size_t arraySize)`就可以复制数组了。
+25. **C** `memset(void * dst, int value, size_t size)`
+26. **C** [vector](www.cplusplus.com/reference/vector/vector/)-->ArrayList in Java, use `push_back()` and `pop_back()`; [queue](http://www.cplusplus.com/reference/queue/queue/)-->LinkedList in Java, use `push()` and `pop()`; [list](http://www.cplusplus.com/reference/list/list/)-->LinkedList in Java, doubly-linked lists, use `push_back()`,  `push_front()`, `pop_back()` and `pop_front()`.在pop/pop_back/pop_front之前要访问的话，先`front()`/`back()`访问完再删除。
