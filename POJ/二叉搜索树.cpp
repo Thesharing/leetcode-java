@@ -51,3 +51,5 @@ int main(void){
 	display(root);
 	cout << endl;
 }
+
+/* http://bailian.openjudge.cn/practice/4079/ */
