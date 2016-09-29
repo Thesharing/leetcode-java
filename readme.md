@@ -1,3 +1,17 @@
+# Online Judge Code
+
+## Intro		
+  		  
+These are source codes of exercises which I completed on three online judge websites, mostly using Java and C++.
+  		  
+[Bailian（百练）](http://bailian.openjudge.cn/)
+  		  
+[UVa Online Judge](https://uva.onlinejudge.org/index.php?option=com_onlinejudge&Itemid=8&category=827)
+  		  
+[LeetCode (Algorithm)](code.com/problemset/algorithms/)
+
+## Note
+
 #### 1 C
 
 double要注意不能用 = 判断相等，最好用 a - b < 0.000001来判断
