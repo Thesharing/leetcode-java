@@ -132,7 +132,9 @@ Set和List比较像，只不过Set中不能存放相同的元素。HashSet采用
 
 `Arrays.binarySearch()`只能在已经排好序的数组里使用。`Arrays.sort()`有两个重载，一个是：`Arrays.sort(Object[] a, int fromIndex, int toIndex)`，另一个是`Arrays.sort(T[] a, Comparator<? super T> c)`。后者可以拓展为`Arrays.sort(s, Collections.reverseOrder())`，而对于字符串来说，sort()会按照字典序也就是先全部大写字母再小写字母的顺序排序，因此可以通过`Arrays.sort(str, String.CASE_INTENSITIVE_ORDER)`来忽略大小写进行排序。
 
-#### 22 C `cout << setw(5) << str;`可以设置输出字符宽度。
+#### 22 C 
+
+`cout << setw(5) << str;`可以设置输出字符宽度。
 
 #### 23  
 
