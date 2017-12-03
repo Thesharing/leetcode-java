@@ -1,0 +1,20 @@
+{
+    "files.associations": {
+        "*.cpp": "cpp",
+        "iostream": "cpp",
+        "queue": "cpp",
+        "ostream": "cpp",
+        "cstdio": "cpp",
+        "initializer_list": "cpp",
+        "string_view": "cpp",
+        "utility": "cpp",
+        "algorithm": "cpp",
+        "limits": "cpp",
+        "cmath": "cpp",
+        "typeinfo": "cpp",
+        "array": "cpp",
+        "*.tcc": "cpp",
+        "cstring": "cpp",
+        "vector": "cpp"
+    }
+}
