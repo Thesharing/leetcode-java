@@ -1,3 +1,46 @@
+/*
+
+描述
+After successive failures in the battles against the Union, the Empire retreated to its last stronghold. Depending on its powerful defense system, the Empire repelled the six waves of Union's attack. After several sleepless nights of thinking, Arthur, General of the Union, noticed that the only weakness of the defense system was its energy supply. The system was charged by N nuclear power stations and breaking down any of them would disable the system.
+
+The general soon started a raid to the stations by N special agents who were paradroped into the stronghold. Unfortunately they failed to land at the expected positions due to the attack by the Empire Air Force. As an experienced general, Arthur soon realized that he needed to rearrange the plan. The first thing he wants to know now is that which agent is the nearest to any power station. Could you, the chief officer, help the general to calculate the minimum distance between an agent and a station?
+
+输入
+The first line is a integer T representing the number of test cases.
+Each test case begins with an integer N (1 ≤ N ≤ 1000).
+The next N lines describe the positions of the stations. Each line consists of two integers X (0 ≤ X ≤ 1000000000) and Y (0 ≤ Y ≤ 1000000000) indicating the positions of the station.
+The next following N lines describe the positions of the agents. Each line consists of two integers X (0 ≤ X ≤ 1000000000) and Y (0 ≤ Y ≤ 1000000000) indicating the positions of the agent. 　
+
+输出
+For each test case output the minimum distance with precision of three decimal placed in a separate line.
+
+样例输入
+2
+4
+0 0
+0 1
+1 0
+1 1
+2 2
+2 3
+3 2
+3 3
+4
+0 0
+0 0
+0 0
+0 0
+0 0
+0 0
+0 0
+0 0
+
+样例输出
+1.414
+0.000
+
+*/
+
 #include <algorithm>
 #include <cmath>
 #include <cstdio>
@@ -74,12 +117,10 @@ double dist(point &a, point &b)
 double closestPair(int start, int end)
 {
     if ((end - start) <= 0) {
-        // cout << "Start: " << start << " End: " << end << " 1: " << start << endl;
         y[start] = start;
         return MAX;
     }
     else if ((end - start) == 1) {
-        // cout << "Start: " << start << " End: " << end << " 2: " << dist(p[start], p[start + 1]) << endl;
         if (p[start].y < p[end].y) {
             y[start] = start;
             y[end] = end;
@@ -88,25 +129,15 @@ double closestPair(int start, int end)
             y[start] = end;
             y[end] = start;
         }
-        // cout << "Y:" << endl;
-        // for(int i = start; i <= end; i++){
-        //     cout << y[i] << ' ' << p[y[i]].x << ' ' << p[y[i]].y << endl;
-        // }
         return dist(p[start], p[start + 1]);
     }
+    // 分治为左边和右边（已经基于X坐标排序过）
     double min = minDouble(closestPair(start, (start + end) / 2), closestPair((start + end) / 2 + 1, end));
-    // cout << "Start: " << start <<  " End: " << end << " Min: " << min << endl;
+    // 然后划分中间区域
     double left = (double)(p[(start + end) / 2].x) - min;
     double right = (double)(p[(start + end) / 2].x) + min;
+    //
     int areaLen = MERGE(start, end, left, right);
-    // cout << "Y:" << endl;
-    // for(int i = start; i <= end; i++){
-    //     cout << y[i] << ' ' << p[y[i]].x << ' ' << p[y[i]].y << endl;
-    // }
-    // cout << "AREA:" << endl;
-    // for(int i = 0; i < areaLen; i++){
-    //     cout << area[i] << ' ' << p[area[i]].x << ' ' << p[area[i]].y << endl;
-    // }
     for (int i = 0; i < areaLen; i++) {
         for (int j = i + 1; j < areaLen; j++) {
             if (p[area[j]].y >= p[area[i]].y + min){
@@ -118,7 +149,6 @@ double closestPair(int start, int end)
             }
         }
     }
-    // cout << "MIN: " << min << endl;
     return min;
 }
 
@@ -138,6 +168,7 @@ int main(void)
             scanf("%d %d", &p[i].x, &p[i].y);
             p[i].type = false;
         }
+        // 基于X坐标排序
         sort(p + 1, p + 2 * n + 1, compareByX);
         printf("%.3lf\n", closestPair(1, 2 * n));
     }

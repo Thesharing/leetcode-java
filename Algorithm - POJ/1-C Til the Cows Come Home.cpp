@@ -40,6 +40,8 @@ int main (void){
 	int t, n;
 	cin >> t >> n;
 	int x, y, value;
+
+	// Input
 	for (int i = 0; i < t; i++){
 		cin >> x >> y;
 		cin >> value;
@@ -48,6 +50,8 @@ int main (void){
 			map[y - 1][x - 1] = value;
 		}
 	}
+
+	// Dijkstra Algorithm
 	for (int i = 0; i < n; i++){
 		final[i] = false;
 		d[i] = map[0][i];
