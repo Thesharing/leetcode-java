@@ -43,19 +43,6 @@ int main(void)
             res[i][j] = MIN;
         }
     }
-    // int max = MIN;
-    // for (int i = 0; i <= V - F; i++) {
-    //     int sum = solve(0, i);
-    //     if (sum > max) {
-    //         max = sum;
-    //     }
-    // }
     printf("%d\n", solve(0, 0));
-    // for (int i = 0; i < F; i++) {
-    //     for (int j = 0; j < V; j++) {
-    //         cout << res[i][j] << "\t\t";
-    //     }
-    //     cout << endl;
-    // }
     return 0;
 }

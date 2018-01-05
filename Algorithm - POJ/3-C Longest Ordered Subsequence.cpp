@@ -36,8 +36,5 @@ int main(void)
         scanf("%d", &num[i]);
     }
     printf("%d\n", findLongestSeq());
-    // for(int i = 0; i < n; i++){
-    //     printf("%d ", res[i]);
-    // }
     return 0;
 }
