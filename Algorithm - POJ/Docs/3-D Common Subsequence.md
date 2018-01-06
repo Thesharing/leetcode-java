@@ -17,13 +17,16 @@ abcd           mnp
 ```
 
 ### 样例输出
-    4
-    2
-    0
+
+```cpp
+4
+2
+0
+```
 
 ### 代码
 
-​```cpp
+```cpp
 #include <cstdio>
 #include <iostream>
 #include <string>
