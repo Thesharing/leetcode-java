@@ -50,6 +50,7 @@ int main (void){
     for (int i = 0; i < t; i++){
         cin >> x >> y;
         cin >> value;
+        // HERE: The road may be duplicate.
         if (value < map[x - 1][y - 1]) {
             map[x - 1][y - 1] = value;
             map[y - 1][x - 1] = value;
