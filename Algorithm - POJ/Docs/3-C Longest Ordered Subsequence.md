@@ -66,3 +66,40 @@ int main(void)
     return 0;
 }
 ```
+
+### 代码 2
+
+```cpp
+#include <cstdio>
+#include <cstring>
+#include <iostream>
+
+using namespace std;
+
+int n;
+int num[1010];
+int res[1010];
+
+int main(void)
+{
+    cin >> n;
+    memset(res, 0, sizeof(res));
+    for (int i = 0; i < n; i++) {
+        cin >> num[i];
+    }
+    for (int i = 0; i < n; i++) {
+        res[i] = 1;
+        for (int j = 0; j < i; j++) {
+            if (num[i] > num[j]) {
+                res[i] = max(res[i], res[j] + 1);
+            }
+        }
+    }
+    int max_value = 0;
+    for (int i = 0; i < n; i++) {
+        max_value = max(max_value, res[i]);
+    }
+    cout << max_value << endl;
+    return 0;
+}
+```

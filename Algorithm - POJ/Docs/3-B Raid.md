@@ -45,7 +45,7 @@ For each test case output the minimum distance with precision of three decimal p
 
 ### 代码
 
-```
+```cpp
 #include <algorithm>
 #include <cmath>
 #include <cstdio>

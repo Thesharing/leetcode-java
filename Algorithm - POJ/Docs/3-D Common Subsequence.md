@@ -72,3 +72,41 @@ int main(void)
     return 0;
 }
 ```
+
+### 代码 2
+
+```cpp
+#include <cstring>
+#include <iostream>
+#define SIZE 500
+
+using namespace std;
+
+int dp[SIZE][SIZE];
+char a[SIZE];
+char b[SIZE];
+int m, n;
+
+int main(void)
+{
+    while (cin >> a >> b) {
+        m = strlen(a);
+        n = strlen(b);
+        for (int i = m; i >= 0; i--) {
+            for (int j = n; j >= 0; j--) {
+                if (i == m || j == n) {
+                    dp[i][j] = 0;
+                }
+                else if (a[i] == b[j]) {
+                    dp[i][j] = dp[i + 1][j + 1] + 1;
+                }
+                else {
+                    dp[i][j] = max(dp[i + 1][j], dp[i][j + 1]);
+                }
+            }
+        }
+        cout << dp[0][0] << endl;
+    }
+    return 0;
+}
+```

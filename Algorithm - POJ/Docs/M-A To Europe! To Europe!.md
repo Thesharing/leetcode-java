@@ -1,7 +1,7 @@
 # To Europe! To Europe!
 
 ### 描述
-Almost everyone in the candidate states wants to `go to Europe'', although most of the people have very vague ideas about what this actually means. Anyway, immediately after the borders are open, the inhabitants will take their cars and trucks and will `go to Europe''. This can cause many troubles, as the roads will be suddenly overloaded by vehicles of various types. You are to help to solve some of these traffic jams. 
+Almost everyone in the candidate states wants to "go to Europe", although most of the people have very vague ideas about what this actually means. Anyway, immediately after the borders are open, the inhabitants will take their cars and trucks and will "go to Europe". This can cause many troubles, as the roads will be suddenly overloaded by vehicles of various types. You are to help to solve some of these traffic jams. 
 
 Assume a convoy of vehicles has lined up in front of a single lane and one-way bridge over a river. Note that since the street is single lane, no vehicle can overtake any other. The bridge can sustain a given maximum load. To control the traffic on the bridge, operators are stationed on either end of the bridge. The convoy of vehicles is to be divided into groups, such that all the vehicles in any group can cross the bridge together. When a group reaches the other side, the operator on that side of the bridge uses a telephone to inform the operator on this side that the next group can start its journey over the bridge. 
 

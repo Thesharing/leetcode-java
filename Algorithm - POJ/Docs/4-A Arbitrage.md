@@ -151,3 +151,124 @@ int main(void)
     return 0;
 }
 ```
+
+### 代码 2
+
+```cpp
+#include <cstring>
+#include <iostream>
+#include <queue>
+#define SIZE 35
+
+using namespace std;
+
+struct edge {
+    int s;    // source
+    double v; // value
+
+    edge(int s, double v) : s(s), v(v) {}
+};
+
+char money_name[SIZE][200];
+int n, m;
+
+int money(char name[])
+{
+    for (int i = 0; i < n; i++) {
+        if (!strcmp(name, money_name[i])) {
+            return i;
+        }
+    }
+    return -1;
+}
+
+int main(void)
+{
+    int case_num = 0;
+    cin >> n;
+    while (n != 0) {
+        case_num++;
+
+        vector<edge> cur[SIZE];
+
+        // ========== Input ==========
+        for (int i = 0; i < n; i++) {
+            cin >> money_name[i];
+        }
+        cin >> m;
+        char src[200], dest[200];
+        double value;
+        for (int i = 0; i < m; i++) {
+            cin >> src >> value >> dest;
+            cur[money(dest)].push_back(edge(money(src), value));
+        }
+
+        // ========== SPFA ===========
+        bool res = false;
+        // HERE: Run n times to avoid isolated points
+        for (int i = 0; i < n; i++) {
+
+            // Variables for SPFA
+            queue<int> q;
+            double d[SIZE];
+            bool in_queue[SIZE];
+            int successor[SIZE];
+
+            int t[SIZE];
+
+            // Init
+            for (int j = 0; j < n; j++) {
+                t[j] = 0;
+                d[j] = 0;
+                in_queue[j] = false;
+                successor[j] = j;
+            }
+            int t_max = 0;
+
+            // Start point
+            t[i] = 1;
+            d[i] = 1;
+            q.push(i);
+            in_queue[i] = true;
+
+            // Begin
+            while (!q.empty() && t_max <= n) {
+                int c = q.front();
+                q.pop();
+                in_queue[c] = false;
+                for (vector<edge>::iterator it = cur[c].begin(); it != cur[c].end(); it++) {
+                    // source < (source->dest) * dest
+                    if (d[it->s] < d[c] * it->v) {
+                        d[it->s] = d[c] * it->v;
+                        successor[it->s] = c;    
+                        // If not in queue, then push it
+                        if (!in_queue[it->s]) {
+                            q.push(it->s);
+                            in_queue[it->s] = true;
+                            if (++t[it->s] > t_max) {
+                                t_max = t[it->s];
+                            }
+                        }
+                    }
+                }
+            }
+            // Negative cycle detect
+            if (t_max >= n) {
+                res = true;
+                break;
+            }
+        }
+
+        cout << "Case " << case_num << ": ";
+        if (res) {
+            cout << "Yes" << endl;
+        }
+        else {
+            cout << "No" << endl;
+        }
+
+        cin >> n;
+    }
+    return 0;
+}
+```
