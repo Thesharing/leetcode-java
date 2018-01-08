@@ -96,7 +96,7 @@ int main(void)
                         if (it_2 != it) {
                             if (find_parent(it_2->x, parent) != find_parent(it_2->y, parent)) {
                                 sum_2 += it_2->w;
-                                parent[it->y] = it_2->x;
+                                parent[it_2->y] = it_2->x;
                             }
                         }
                     }

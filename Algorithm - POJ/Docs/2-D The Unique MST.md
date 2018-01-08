@@ -136,7 +136,7 @@ int main(void)
                         if (it_2 != it) {
                             if (find_parent(it_2->x, parent) != find_parent(it_2->y, parent)) {
                                 sum_2 += it_2->w;
-                                parent[it->y] = it_2->x;
+                                parent[it_2->y] = it_2->x;
                             }
                         }
                     }
@@ -153,6 +153,116 @@ int main(void)
         }
         else {
             cout << sum << endl;
+        }
+    }
+    return 0;
+}
+```
+
+### 代码 2
+
+```cpp
+#include <algorithm>
+#include <cstring>
+#include <iostream>
+#include <vector>
+
+using namespace std;
+
+struct edge {
+    int x;
+    int y;
+    int w;
+    int sign;
+
+    edge(int x, int y, int w, int s) : x(x), y(y), w(w), sign(s) {}
+
+    bool operator<(const edge &e) const
+    {
+        return w < e.w;
+    }
+
+    bool operator>(const edge &e) const
+    {
+        return w > e.w;
+    }
+};
+
+int n, m;
+int parent[110];
+
+int find_parent(int loc)
+{
+    if (parent[loc] != loc) {
+        parent[loc] = find_parent(parent[loc]);
+    }
+    return parent[loc];
+}
+
+int main(void)
+{
+    int t;
+    cin >> t;
+    while (t-- > 0) {
+        cin >> n >> m;
+        int x, y, w, s;
+        vector<edge> v;
+        edge *last_e = NULL;
+        for (int i = 0; i < m; i++) {
+            cin >> x >> y >> w;
+            if (last_e != NULL && last_e->w == w) {
+                s = 1;
+                last_e->sign = s;
+            }
+            else {
+                s = 0;
+            }
+            v.push_back(edge(x, y, w, s));
+            last_e = &v.back();
+        }
+        sort(v.begin(), v.end());
+        
+        for (int i = 1; i <= n; i++) {
+            parent[i] = i;
+        }
+        int sum = 0;
+        for (vector<edge>::iterator it = v.begin(); it != v.end(); it++) {
+            // cout << "X: " << it->x << " Y: " << it->y << " W: " << it->w << " S: " << it->sign << endl;
+            if (find_parent(it->x) != find_parent(it->y)) {
+                sum += it->w;
+                // HERE: Combine two sets
+                parent[it->y] = it->x;
+                if (it->sign == 1) {
+                    it->sign = 2;
+                }
+            }
+        }
+        bool res = true;
+        for (vector<edge>::iterator it = v.begin(); it != v.end(); it++) {
+            int sum_1 = 0;
+            for (int i = 1; i <= n; i++) {
+                parent[i] = i;
+            }
+            if (it->sign == 2) {
+                it->sign = 3;
+                for (vector<edge>::iterator it_1 = v.begin(); it_1 != v.end(); it_1++) {
+                    if (it_1->sign != 3 && find_parent(it_1->x) != find_parent(it_1->y)) {
+                        sum_1 += it_1->w;
+                        parent[it_1->y] = it_1->x;
+                    }
+                }
+                if (sum_1 == sum) {
+                    res = false;
+                    break;
+                }
+                it->sign = 2;
+            }
+        }
+        if (res) {
+            cout << sum << endl;
+        }
+        else {
+            cout << "Not Unique!" << endl;
         }
     }
     return 0;
